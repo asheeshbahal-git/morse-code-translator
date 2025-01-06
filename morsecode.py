@@ -1,6 +1,7 @@
 class MorseCode:
     
-    DICT_MORSE_CODE = { 
+    def __init__(self):
+        self.DICT_MORSE_CODE = {
                         'A':'.-', 
                         'B':'-...',
                         'C':'-.-.', 
@@ -38,6 +39,7 @@ class MorseCode:
                         '9':'----.',
                         '0':'-----'
                     }
+
     ##
     # Retrieve letter corresponding to supplied morse code
     ##
@@ -84,7 +86,7 @@ class MorseCode:
 
         str_decrypted = ''
         if message == '':
-            print("Message to dencrpyt cannot be empty")
+            print("Message to de-crpyt cannot be empty")
             str_decrypted = 'Value Error'
             return str_decrypted
         
@@ -96,3 +98,13 @@ class MorseCode:
                 str_decrypted += ' '
         
         return str_decrypted
+
+    def RunTranslator(self):
+        while True:
+            str_input_message = input('Enter the message to convert t0 Morse code, type exit to close: ')
+            if str_input_message.lower() == 'exit':
+                break
+            str_encoded_message = self.Encrypt(str_input_message)
+            str_decoded_message = self.Decrypt(str_encoded_message)
+
+            print(f'Encoded message: {str_encoded_message} Decoded message: {str_decoded_message}')
